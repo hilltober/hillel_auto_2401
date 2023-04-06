@@ -1,12 +1,14 @@
-from unittest.mock import patch, MagicMock
-
+import pytest
 from pytest_mock import MockerFixture
+
+from unittest.mock import patch, MagicMock
 
 
 def ignored_func() -> str:
     return 'some_ignored_string'
 
 
+@pytest.mark.mocks
 def test_can_mock_ignored_func_with_default_mock():
     with patch(target='lecture_pytest.tests.test_mocks.ignored_func',
                return_value='some_mocked_str'):
@@ -14,6 +16,7 @@ def test_can_mock_ignored_func_with_default_mock():
     assert ignored_func() == 'some_ignored_string'
 
 
+@pytest.mark.mocks
 def test_can_mock_ignored_func_with_pytest_mock(mocker: MockerFixture):
     mocker.patch(target='lecture_pytest.tests.test_mocks.ignored_func',
                  return_value='another_mocked_str')
@@ -34,6 +37,7 @@ class MyClass:
         return f"{self.config.endpoint}/{path}?api_key={self.config.api_key}"
 
 
+@pytest.mark.mocks
 def test_get_url():
     config_mock = MagicMock(spec=Config)
     config_mock.api_key = 'test_key'
