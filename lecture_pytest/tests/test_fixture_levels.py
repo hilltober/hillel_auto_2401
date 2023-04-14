@@ -13,7 +13,7 @@ class TestFixtureTests1:
     @pytest.mark.negative
     @pytest.mark.functional
     def test_2(self):
-        print('\nsmoke1')
+        print('\nsmoke2')
 
 
 class TestFixtureTests2:
@@ -27,9 +27,9 @@ class TestFixtureTests2:
     @pytest.mark.positive
     @pytest.mark.functional
     def test_2(self):
-        print('\nregr1')
+        print('\nregr2')
 
     @pytest.mark.regression
     @pytest.mark.negative
     def test_3(self):
-        print('\nregr2')
+        print('\nregr3')
