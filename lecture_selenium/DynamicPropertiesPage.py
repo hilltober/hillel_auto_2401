@@ -10,7 +10,7 @@ class PageDynamicProperties:
         self.disabled_enabled_button_loc = (By.CSS_SELECTOR, 'button#enableAfter')
         self.invisible_visible_button_loc = (By.CSS_SELECTOR, 'button#visibleAfter')
 
-    def open(self):
+    def open(self) -> 'PageDynamicProperties':
         self.driver.get('https://demoqa.com/dynamic-properties')
         return self
 

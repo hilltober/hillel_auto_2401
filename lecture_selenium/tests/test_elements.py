@@ -51,7 +51,7 @@ class TestTextBoxPage:
 @pytest.mark.usefixtures('chrome')
 class TestDynamicElements:
 
-    def setup_method(self):
+    def setup_method(self) -> None:
         self.driver: WebDriver = self.driver
         self.page = PageDynamicProperties(self.driver).open()
 

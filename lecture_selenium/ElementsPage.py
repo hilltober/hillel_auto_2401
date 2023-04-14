@@ -9,10 +9,10 @@ class ElementsPage(object):
         self.driver = driver
         self.element_categories = By.XPATH, '//div[contains(@class, "show")]//li'
 
-    def open(self):
+    def open(self) -> 'ElementsPage':
         self.driver.get(page_url)
         return self
 
-    def get_elements_page_categories(self):
+    def get_elements_page_categories(self) -> list:
         categories = [cat.text for cat in self.driver.find_elements(*self.element_categories)]
         return categories
