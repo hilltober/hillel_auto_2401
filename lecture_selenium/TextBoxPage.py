@@ -9,9 +9,9 @@ class TextBoxPage:
         self.full_name_field = (By.ID, 'userName')
         self.email_field = (By.ID, 'userEmail')
         self.current_address_text_area = (
-        By.CSS_SELECTOR, 'textarea#currentAddress')
+            By.CSS_SELECTOR, 'textarea#currentAddress')
         self.permanent_address_text_area = (
-        By.CSS_SELECTOR, 'textarea#permanentAddress')
+            By.CSS_SELECTOR, 'textarea#permanentAddress')
         self.submit_button = (By.ID, 'submit')
         self.result_full_name = (By.ID, 'name')
         self.result_email = (By.ID, 'email')
