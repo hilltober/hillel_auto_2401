@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class TextBoxPage:
@@ -31,8 +32,13 @@ class TextBoxPage:
     def clear_email_field(self) -> None:
         self.driver.find_element(*self.email_field).clear()
 
-    def fill_email_field(self, text: str) -> None:
+    def fill_email_field(self, text: str, clear=False) -> None:
+        if clear:
+            self.clear_email_field()
         self.driver.find_element(*self.email_field).send_keys(text)
+
+    def get_email_field_element(self) -> WebElement:
+        return self.driver.find_element(*self.email_field)
 
     def clear_current_address_field(self) -> None:
         self.driver.find_element(*self.current_address_text_area).clear()
@@ -55,10 +61,11 @@ class TextBoxPage:
         return self.driver.find_element(*self.result_full_name).text
 
     def get_result_email(self):
-        return self.driver.find_element(*self.email_field).text
+        return self.driver.find_element(*self.result_email).text
 
     def get_result_curr_addr(self):
         return self.driver.find_element(*self.result_curr_addr).text
 
     def get_result_perm_addr(self):
-        return self.driver.find_element(*self.result_perm_addr).text
+        perm_addr = self.driver.find_element(*self.result_perm_addr).text
+        return perm_addr.split(':')[-1].strip()
