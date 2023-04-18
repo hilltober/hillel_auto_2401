@@ -6,8 +6,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
-from lecture_selenium.DynamicPropertiesPage import PageDynamicProperties
-from lecture_selenium.TextBoxPage import TextBoxPage
+from lecture_selenium.src.pages.page_dynamic_properties import PageDynamicProperties
+from lecture_selenium.src.pages.page_text_box import TextBoxPage
 
 
 @pytest.mark.usefixtures('chrome')

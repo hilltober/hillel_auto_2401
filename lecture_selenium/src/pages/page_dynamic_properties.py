@@ -4,6 +4,13 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class PageDynamicProperties:
+    URL = 'https://demoqa.com/dynamic-properties'
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super.__new__(cls)
+        return cls._instance
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
@@ -11,7 +18,7 @@ class PageDynamicProperties:
         self.invisible_visible_button_loc = (By.CSS_SELECTOR, 'button#visibleAfter')
 
     def open(self) -> 'PageDynamicProperties':
-        self.driver.get('https://demoqa.com/dynamic-properties')
+        self.driver.get(self.URL)
         return self
 
     def button_invisible_visible(self) -> WebElement:

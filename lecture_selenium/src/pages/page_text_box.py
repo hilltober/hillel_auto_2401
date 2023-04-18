@@ -4,9 +4,17 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class TextBoxPage:
+    URL = 'https://demoqa.com/text-box'
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super.__new__(cls)
+        return cls._instance
+
     def __init__(self, driver: WebDriver):
         self.driver = driver
-        self.url = 'https://demoqa.com/text-box'
+
         self.full_name_field = (By.ID, 'userName')
         self.email_field = (By.ID, 'userEmail')
         self.current_address_text_area = (
@@ -20,7 +28,7 @@ class TextBoxPage:
         self.result_perm_addr = (By.CSS_SELECTOR, 'p#permanentAddress')
 
     def open(self) -> 'TextBoxPage':
-        self.driver.get(self.url)
+        self.driver.get(self.URL)
         return self
 
     def clear_full_name_field(self) -> None:
@@ -54,18 +62,18 @@ class TextBoxPage:
         self.driver.find_element(*self.permanent_address_text_area).send_keys(
             text)
 
-    def click_submit(self):
+    def click_submit(self) -> None:
         self.driver.find_element(*self.submit_button).click()
 
-    def get_result_fullname(self):
+    def get_result_fullname(self) -> str:
         return self.driver.find_element(*self.result_full_name).text
 
-    def get_result_email(self):
+    def get_result_email(self) -> str:
         return self.driver.find_element(*self.result_email).text
 
-    def get_result_curr_addr(self):
+    def get_result_curr_addr(self) -> str:
         return self.driver.find_element(*self.result_curr_addr).text
 
-    def get_result_perm_addr(self):
+    def get_result_perm_addr(self) -> str:
         perm_addr = self.driver.find_element(*self.result_perm_addr).text
         return perm_addr.split(':')[-1].strip()
