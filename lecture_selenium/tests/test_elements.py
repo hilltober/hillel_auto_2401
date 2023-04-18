@@ -6,6 +6,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
+from lecture_selenium.src.helper.elements import wait_element_to_be_enabled
 from lecture_selenium.src.pages.page_dynamic_properties import PageDynamicProperties
 from lecture_selenium.src.pages.page_text_box import TextBoxPage
 
@@ -65,17 +66,7 @@ class TestDynamicElements:
     def test_is_button_enables_custom_wait(self):
         locator = self.page.disabled_enabled_button_loc
         button: WebElement = self.driver.find_element(*locator)
-        assert self.is_element_enabled(button, timeout=5)
-
-    @staticmethod
-    def is_element_enabled(element: WebElement, timeout: int) -> bool:
-        end_time = time.monotonic() + timeout
-        while time.monotonic() <= end_time:
-            if element.is_enabled():
-                return True
-            else:
-                time.sleep(0.1)
-        raise TimeoutError(f'Element is not enabled after {timeout} seconds')
+        assert wait_element_to_be_enabled(button, timeout=5)
 
 
 @pytest.mark.parametrize('key,value',
