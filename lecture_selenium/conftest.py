@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service
 
 
@@ -23,3 +24,20 @@ def chrome(request):
         request.cls.driver = driver
     yield driver
     driver.quit()
+
+
+@pytest.fixture()
+def firefox(request):
+    service = Service(GeckoDriverManager().install())
+    driver = webdriver.Firefox(service=service)
+    driver.set_page_load_timeout(30)
+    if request.cls:
+        request.cls.driver = driver
+    yield driver
+    driver.quit()
+
+
+@pytest.fixture()
+def example_project_fixture():
+    text = "12345"
+    yield text
