@@ -26,7 +26,7 @@ def chrome(request):
     driver.quit()
 
 
-@pytest.fixture()
+@pytest.fixture(scope='class')
 def firefox(request):
     service = Service(GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service)
@@ -35,9 +35,3 @@ def firefox(request):
         request.cls.driver = driver
     yield driver
     driver.quit()
-
-
-@pytest.fixture()
-def example_project_fixture():
-    text = "12345"
-    yield text
