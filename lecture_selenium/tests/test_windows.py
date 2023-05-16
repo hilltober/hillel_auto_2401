@@ -1,7 +1,6 @@
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
-from webdriver_manager.chrome import ChromeDriverManager
 
 from lecture_selenium.src.pages.page_windows import WindowsPage
 
