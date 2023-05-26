@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 def test_cookies(chrome):
     driver = chrome
     driver.get('https://rozetka.com.ua/')
+    # Підставляєму у драйвер cookies зі збереженого раніше файлу
     with open('cookies.pkl', 'rb') as file:
         cookies = pickle.load(file)
         for cookie in cookies:
@@ -18,14 +19,14 @@ def test_cookies(chrome):
     # _ = driver.find_element(By.CSS_SELECTOR, 'div.modal__holder')
     # email_field = driver.find_element(By.CSS_SELECTOR, 'input[type="email"]')
     # password_field = driver.find_element(By.CSS_SELECTOR, 'input#auth_pass')
-    # email_field.send_keys('hilltober@gmail.com')
-    # password_field.send_keys('Gfhjkm123')
+    # email_field.send_keys('example@mail.com')
+    # password_field.send_keys('123')
     # remember_checkbox = driver.find_element(By.CSS_SELECTOR, 'label[for="remember_me"]')
     # remember_checkbox.click()
     # submit_button = driver.find_element(By.XPATH, '//button[contains(@class, "auth-modal__submit")]')
     # submit_button.click()
-    # # cookies = driver.get_cookies()
+    # cookies = driver.get_cookies()
     # # Зберігаємо cookies у файл за допомогою pickle
-    # # with open('cookies.pkl', 'wb') as file:
-    # #     pickle.dump(cookies, file)
+    # with open('cookies.pkl', 'wb') as file:
+    #     pickle.dump(cookies, file)
     # pass
