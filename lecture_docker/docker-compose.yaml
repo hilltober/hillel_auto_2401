@@ -1,7 +1,9 @@
 version: "3"
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    build:
+      context: .
+      dockerfile: jenkins.Dockerfile
     ports:
       - "8080:8080"
     volumes:
@@ -10,4 +12,4 @@ services:
   pytest:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: tests.Dockerfile
