@@ -82,9 +82,7 @@ def install(zip_file_name: str):
     folder_name = get_unzipped_folder_name(zip_file_name)
     path = f'{target}{folder_name}'
 
-    if is_folder_exists(path, info=True):
-        pass
-    else:
+    if not is_folder_exists(path, info=True):
         os.system(f'mv {folder_name} {target}{folder_name}')
         os.system(
             f'ln -s {target}{folder_name}{binary} /usr/local{binary}')
