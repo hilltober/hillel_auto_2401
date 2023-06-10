@@ -1,10 +1,10 @@
 class TestDocker:
 
     def test_docker1(self):
-        pass
+        assert False
 
     def test_docker2(self):
-        pass
+        assert False
 
     def test_docker3(self):
-        pass
+        assert False
