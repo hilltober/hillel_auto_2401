@@ -7,4 +7,4 @@ class TestDocker:
         pass
 
     def test_docker3(self):
-        pass
+        assert False
