@@ -2,6 +2,7 @@ FROM ubuntu
 
 USER root
 RUN mkdir project
+RUN mkdir reports
 WORKDIR project
 
 COPY tests ./tests
