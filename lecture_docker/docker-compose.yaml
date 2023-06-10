@@ -8,6 +8,8 @@ services:
       - "8080:8080"
     volumes:
       - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./reports:/reports
 
   pytest:
     build:
@@ -15,3 +17,6 @@ services:
       dockerfile: tests.Dockerfile
     volumes:
       - ./reports:/reports
+    depends_on:
+      - jenkins
+    command: tail -f /dev/null
