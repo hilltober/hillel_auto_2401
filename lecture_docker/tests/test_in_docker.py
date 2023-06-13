@@ -21,6 +21,10 @@ class TestDocker:
         chrome.get('https://google.com')
         assert chrome.find_element(By.XPATH, '//img[@alt="Google"]').is_displayed()
 
+    def test_docker_selenium_2(self, chrome):
+        chrome.get('https://google.com')
+        assert chrome.find_element(By.XPATH, '//img[@alt="Googles"]').is_displayed()
+
     def test_docker2(self):
         assert True
 
