@@ -1,0 +1,48 @@
+/html/body/ytmusic-app/ytmusic-app-layout/div[4]/ytmusic-browse-response/div[2]/div[4]/ytmusic-section-list-renderer/div[2]/ytmusic-playlist-shelf-renderer/div[1]/ytmusic-responsive-list-item-renderer[1]
+
+# Даний локатор знайде всі елементи в атрибути @class яких є 'yt-simple-endpoint' та нема "ytmusic-nav-bar"
+//a[contains(@class, 'yt-simple-endpoint')][not(contains(@class, 'ytmusic-nav-bar'))]
+
+
+# Дані локатори знайдуть всі пісні з поміткою "KOLA"
+//a[.="KOLA"]
+//a[text()="KOLA"]
+//a[contains(text(), "KOLA")]
+//a[starts-with(text(), "KOLA")]
+//a[ends-with(text(), "KOLA")]
+
+
+# Даний локатор, а також локатори з попереднього прикладу, якщо їх огорнути дужками і вказати індекс,
+# повернуть 1 елемент з відповідним індексом, якщо він існує
+(//a[.="KOLA"])[1]
+
+# буде обрано батьківський (на 1 рівень вище за цільовий) елемент
+//a[.="KOLA"]..
+
+# буде обрано батьківський (на 2 рівні вище за цільовий) елемент
+//a[.="KOLA"]../..
+
+# Буде обрано батьківський елемент від a[.="KOLA"] який буде div[starts-with(@class, 'flex-columns')]
+//a[.="KOLA"]//ancestor::div[starts-with(@class, 'flex-columns')]
+
+# Поверне всі елементи які є назвами пісень автора KOLA
+//a[.="KOLA"]//ancestor::div[starts-with(@class, 'flex-columns')]//div[contains(@class, 'title-column')]
+
+# Поверне один елемент: автор KOLA, після "Біля серця"
+//a[.="KOLA"]//ancestor::div[starts-with(@class, 'flex-columns')]//div[contains(@class, 'title-column')]//a[text()='Біля серця']
+//a[.='Біля серця']
+
+# Знайде тест, незалежно від регістру
+//a[translate(text(), 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя', 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ') = 'БІЛЯ СЕРЦЯ']
+
+# Python example
+name = 'Біля серця'
+lcase = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
+ucase = lcase.upper()
+
+f'//a[translate(text(), {lcase}, {ucase}) = '{name}']'
+
+xpath1 = "//ldfkngdng[@,'msdnf']"
+xpath2 = "//ldfkxxxng[@,'msdnf']"
+xpath3 = xpath1 + xpath2
+xpath4 = f'{xpath1}{xpath2}'

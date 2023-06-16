@@ -5,3 +5,5 @@ __pycache__
 jenkins_home
 reports
 assets
+geckodriver.log
+
