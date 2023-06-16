@@ -5,7 +5,7 @@ import pytest
 @pytest.mark.timed
 def test_1():
     time.sleep(5)
-    pass
+    raise OSError('Some error according to OS')
 
 
 @pytest.mark.timed

@@ -4,3 +4,4 @@ htmlcov/*
 __pycache__
 jenkins_home
 reports
+assets
